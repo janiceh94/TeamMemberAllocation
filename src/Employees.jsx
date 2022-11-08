@@ -91,23 +91,28 @@ export default function Employees(){
 
     return (
         <main className="container">
-            <div class="row">
+            {/* class = bootstrap */}
+            {/* mt, mb => margin-top, margin-bottom */}
+            <div class="row justify-content-center mt-3 mb-3">
                 <div class="col-8">
-                    {
-                        employees.map((employee) => (
-                            <div id={employee.id} className="card">
-                                <img src={femaleProfile} alt="employee profile" className="card-img-top"/>
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Full Name: {employee.fullName}
-                                    </h5>
-                                    <p className="card-text">
-                                        <b>Designation:</b> {employee.designation}
-                                    </p>
+                    <div class="card-collection">
+                        {
+                            employees.map((employee) => (
+                                // m => margin
+                                <div id={employee.id} className="card m-2">
+                                    <img src={femaleProfile} alt="employee profile" className="card-img-top"/>
+                                    <div className="card-body">
+                                        <h5 className="card-title">
+                                            Full Name: {employee.fullName}
+                                        </h5>
+                                        <p className="card-text">
+                                            <b>Designation:</b> {employee.designation}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
         </main>
