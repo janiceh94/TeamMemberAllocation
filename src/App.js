@@ -1,6 +1,6 @@
 import './App.css';
 import Header from "./component/Header/Header";
-import Employee from "./Employees";
+import Employees from "./Employees";
 import Footer from "./component/Footer/Footer";
 import GroupedTeamMembers from './component/GroupedTeamMembers';
 import Nav from "./component/Nav";
@@ -10,9 +10,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
 function App() {
 
-  const [selectedTeam, setSelectedTeam] = useState(JSON.parse   (localStorage.getItem("selectedTeam")) || "TeamB");
+  const [selectedTeam, setTeam] = useState(JSON.parse(localStorage.getItem('selectedTeam')) || "TeamB");
 
-  const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem("employeeList")) || [{
+  const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem('employeeList')) || [{
       id: 1,
       fullName: "Bob Jones",
       designation: "JavaScript Developer",
@@ -98,56 +98,61 @@ function App() {
     }]);
 
     useEffect(() => {
-      localStorage.setItem('employeeList', JSON.stringify(employees))
+      localStorage.setItem('employeeList', JSON.stringify(employees));
     }, [employees]);
 
     useEffect(() => {
-      localStorage.setItem('selectedTeam', JSON.stringify(selectedTeam))
+      localStorage.setItem('selectedTeam', JSON.stringify(selectedTeam));
     }, [selectedTeam]);
 
-    function handleTeamSelectionChange(event){
-        setSelectedTeam(event.target.value);
+    function handleTeamSelectionChange(event) {
+      setTeam(event.target.value);
     }
 
     //create box shadow over employee cards that are in the relevant team
-    function handleEmployeeCardClick(event){
-        const transformedEmployees = employees.map((employee) => employee.id === parseInt(event.currentTarget.id) ?
-        (employee.teamName === selectedTeam) ?
-        {
-            ...employee,
-            teamName: ""
-        } :
-        {
-            ...employee,
-            teamName: selectedTeam
-        } :
-        employee
-        );
-        setEmployees(transformedEmployees);
+    function handleEmployeeCardClick(event) {
+      const transformedEmployees = employees.map(
+        (employee) => employee.id === parseInt(event.currentTarget.id)
+        ? (employee.teamName === selectedTeam) 
+        ? { ...employee, teamName: '' } 
+        : { ...employee, teamName: selectedTeam }
+        : employee);
+      setEmployees(transformedEmployees);
     }
 
-  return (
-    <div className="App">
+    return (
       <Router>
-        <Nav/>
-        <Header selectedTeam={selectedTeam}
-            teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length}
-          />
-          <Routes>
-            <Route path="/" element={<Employee employees={employees}
-                selectedTeam={selectedTeam}
-                handleEmployeeCardClick={handleEmployeeCardClick}
-                handleTeamSelectionChange={handleTeamSelectionChange}
-              />}>
-            </Route>
-            <Route path="/GroupedTeamMembers" element =   {<GroupedTeamMembers/>}>
-            </Route>
-            <Route path="*" element={<NotFound/>}>
-            </Route>
-          </Routes>
-        <Footer/>
-      </Router>
-    </div>
+        <Nav />
+        <Header 
+          selectedTeam={selectedTeam}
+          teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length}
+        />
+        <Routes>
+          <Route 
+            path="/"
+            element={<Employees 
+            employees={employees}
+            selectedTeam={selectedTeam}
+            handleEmployeeCardClick={handleEmployeeCardClick}
+            handleTeamSelectionChange={handleTeamSelectionChange}
+            />}>
+          </Route>
+          <Route 
+            path="/GroupedTeamMembers" 
+            element={<GroupedTeamMembers 
+            employees={employees}
+            selectedTeam={selectedTeam} 
+            setTeam={setTeam} />}
+          >
+          </Route>
+          <Route 
+            path="*" 
+            element={<NotFound />}
+          >
+        </Route>
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
