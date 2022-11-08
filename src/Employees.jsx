@@ -100,7 +100,11 @@ export default function Employees(){
                             employees.map((employee) => (
                                 // m => margin
                                 <div id={employee.id} className="card m-2" style={{cursor:"pointer"}}>
-                                    <img src={femaleProfile} alt="employee profile" className="card-img-top"/>
+                                    {/* determine employee img */}
+                                    {(employee.gender === "female") ? 
+                                        <img src={femaleProfile} alt="employee profile" className="card-img-top"/> : 
+                                        <img src={maleProfile} alt="employee profile" className="card-img-top"/>
+                                    }
                                     <div className="card-body">
                                         <h5 className="card-title">
                                             Full Name: {employee.fullName}
