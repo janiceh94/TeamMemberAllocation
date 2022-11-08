@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Nav(){
     return (
-        <nav className="navbar navbar-expanded-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <ul className="navbar-nav me-auto mb-2 mg-lb-0">
                 <li className="nav-item">
                     <Link className="nav-link" to="/">
