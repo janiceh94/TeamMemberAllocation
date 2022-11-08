@@ -95,6 +95,23 @@ export default function Employees(){
         setSelectedTeam(event.target.value);
     }
 
+    //create box shadow over employee cards that are in the relevant team
+    function handleEmployeeCardClick(event){
+        const transformedEmployees = employees.map((employee) => employee.id === parseInt(event.currentTarget.id) ?
+        (employee.teamName === selectedTeam) ?
+        {
+            ...employee,
+            teamName: ""
+        } :
+        {
+            ...employee,
+            teamName: selectedTeam
+        } :
+        employee
+        );
+        setEmployees(transformedEmployees);
+    }
+
     return (
         <main className="container">
             <div className="row justify-content-center mt-3 mb-3">
@@ -118,7 +135,12 @@ export default function Employees(){
                         {
                             employees.map((employee) => (
                                 // m => margin
-                                <div id={employee.id} className="card m-2" style={{cursor:"pointer"}}>
+                                <div 
+                                    id={employee.id} 
+                                    className={(employee.teamName === selectedTeam ? "card m-2 standout" : "card m-2" )}
+                                    style={{cursor:"pointer"}}
+                                    onClick={handleEmployeeCardClick}
+                                >
                                     {/* determine employee img */}
                                     {(employee.gender === "female") ? 
                                         <img src={femaleProfile} alt="employee profile" className="card-img-top"/> : 
