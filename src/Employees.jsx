@@ -4,6 +4,8 @@ import maleProfile from "./images/maleProfile.jpeg";
 
 export default function Employees(){
 
+    const [selectedTeam, setSelectedTeam] = useState("TeamB");
+
     const [employees, setEmployees] = useState([{
         id: 1,
         fullName: "Bob Jones",
@@ -89,11 +91,18 @@ export default function Employees(){
         teamName: "TeamD"
     }]);
 
+    function handleTeamSelectionChange(event){
+        setSelectedTeam(event.target.value);
+    }
+
     return (
         <main className="container">
-            <div class="row justify-content-center mt-3 mb-3">
-                <div class="col-6">
-                    <select className="form-select form-select-lg">
+            <div className="row justify-content-center mt-3 mb-3">
+                <div className="col-6">
+                    <select className="form-select form-select-lg"
+                        value={selectedTeam}
+                        onChange={handleTeamSelectionChange}
+                    >
                         <option value="TeamA">TeamA</option>
                         <option value="TeamB">TeamB</option>
                         <option value="TeamC">TeamC</option>
@@ -103,9 +112,9 @@ export default function Employees(){
             </div>
             {/* class = bootstrap */}
             {/* mt, mb => margin-top, margin-bottom */}
-            <div class="row justify-content-center mt-3 mb-3">
-                <div class="col-8">
-                    <div class="card-collection">
+            <div clasclassNames="row justify-content-center mt-3 mb-3">
+                <div className="col-8">
+                    <div className="card-collection">
                         {
                             employees.map((employee) => (
                                 // m => margin
