@@ -3,6 +3,7 @@ import Header from "./component/Header/Header";
 import Employee from "./Employees";
 import Footer from "./component/Footer/Footer";
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
 

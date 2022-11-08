@@ -26,6 +26,7 @@ export default function Employees({employees, selectedTeam, handleTeamSelectionC
                             employees.map((employee) => (
                                 // m => margin
                                 <div 
+                                    key={employee.id}
                                     id={employee.id} 
                                     className={(employee.teamName === selectedTeam ? "card m-2 standout" : "card m-2" )}
                                     style={{cursor:"pointer"}}
