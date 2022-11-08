@@ -129,7 +129,7 @@ export default function Employees(){
             </div>
             {/* class = bootstrap */}
             {/* mt, mb => margin-top, margin-bottom */}
-            <div clasclassNames="row justify-content-center mt-3 mb-3">
+            <div className="row justify-content-center mt-3 mb-3">
                 <div className="col-8">
                     <div className="card-collection">
                         {
