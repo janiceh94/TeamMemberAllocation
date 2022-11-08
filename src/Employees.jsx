@@ -1,7 +1,7 @@
 import femaleProfile from "./images/femaleProfile.jpeg";
 import maleProfile from "./images/maleProfile.jpeg";
 
-export default function Employees(){
+export default function Employees({employees, selectedTeam, handleTeamSelectionChange, handleEmployeeCardClick}){
     return (
         <main className="container">
             <div className="row justify-content-center mt-3 mb-3">
