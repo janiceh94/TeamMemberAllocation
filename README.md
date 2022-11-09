@@ -1,5 +1,7 @@
 Created from following "React JavaScript Framework for Beginners - Project-Based Course" by freeCodeCamp.org
 
+![Screen Shot 2022-11-08 at 4 21 10 PM](https://user-images.githubusercontent.com/93102224/200705261-a6b2ec9e-26d2-4523-93d0-b32e71707ecd.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
